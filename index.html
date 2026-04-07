@@ -146,8 +146,8 @@ section { padding:6rem 2rem; }
 
 /* INFO */
 #info { background:var(--cream); }
-.info-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:0; margin-top:4rem; border:1px solid rgba(29,74,50,0.15); }
-.info-cell { padding:2.5rem 2rem; border-right:1px solid rgba(29,74,50,0.12); transition:background 0.3s; }
+.info-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:0; margin-top:4rem; border:1px solid rgba(29,74,50,0.15); min-width:0; }
+.info-cell { padding:2.5rem 1.5rem; border-right:1px solid rgba(29,74,50,0.12); transition:background 0.3s; min-width:0; word-break:break-word; }
 .info-cell:hover { background:rgba(29,74,50,0.04); }
 .info-cell:last-child { border-right:none; }
 .info-num { font-family:'Cormorant Garamond',serif; font-size:2.5rem; font-weight:200; color:rgba(29,74,50,0.2); display:block; line-height:1; margin-bottom:0.8rem; }
@@ -448,8 +448,8 @@ footer .foot-quote { font-family:'Cormorant Garamond',serif; font-style:italic; 
       <div class="fg">
         <label>¿Vienes de fuera de Madrid? *</label>
         <div class="rd-group" id="rg-fuera">
-          <label><input type="radio" name="fuera_madrid" value="No, soy de Madrid"> 🏙 No, soy de Madrid</label>
-          <label><input type="radio" name="fuera_madrid" value="Sí, viajo a Madrid"> 🚆 Sí, viajo a Madrid</label>
+          <label><input type="radio" name="fuera_madrid" value="Vivo en Madrid"> 🏙 Vivo en Madrid</label>
+          <label><input type="radio" name="fuera_madrid" value="Sí, vengo de fuera"> 🚆 Sí, vengo de fuera</label>
         </div>
       </div>
       <div class="fg">
