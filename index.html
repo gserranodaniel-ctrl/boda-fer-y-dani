@@ -556,13 +556,22 @@ const WEDDING=new Date(2027,4,28,18,30,0);
 
 window.onload=()=>{
   document.getElementById('lp').addEventListener('keydown',e=>{if(e.key==='Enter')doLogin();});
-  if(sessionStorage.getItem('w_auth')==='1'){document.getElementById('login-screen').style.display='none';init();}
+  if(sessionStorage.getItem('w_auth')==='1'){
+    document.getElementById('login-screen').style.display='none';
+    init();
+  }
 };
 
 function doLogin(){
-  const u=document.getElementById('lu').value.trim(),p=document.getElementById('lp').value;
-  if(u===CREDS.u&&p===CREDS.p){sessionStorage.setItem('w_auth','1');document.getElementById('login-screen').style.display='none';init();}
-  else{document.getElementById('lerr').style.display='block';}
+  const u=document.getElementById('lu').value.trim();
+  const p=document.getElementById('lp').value;
+  if(u===CREDS.u && p===CREDS.p){
+    sessionStorage.setItem('w_auth','1');
+    document.getElementById('login-screen').style.display='none';
+    init();
+  } else {
+    document.getElementById('lerr').style.display='block';
+  }
 }
 
 function init(){countdown();scrollFade();}
