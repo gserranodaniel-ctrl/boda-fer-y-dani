@@ -880,7 +880,7 @@ table.atbl td { padding: 0.7rem 0.7rem; color: #bbb; border-bottom: 1px solid rg
     <div class="rule-center fi" style="justify-content:center;"><div class="line light"></div><div class="diamond light"></div><div class="line light"></div></div>
     <p class="fi" style="text-align:center;color:rgba(255,255,255,0.35);font-size:0.78rem;letter-spacing:0.1em;margin-top:0.5rem;">Por favor antes del <strong style="color:var(--gold)">1 de Mayo de 2025</strong></p>
 
-    <form class="rsvp-form fi" id="rsvp-form-w" name="rsvp" method="POST" action="/gracias.html" data-netlify="true" netlify-honeypot="bot-field">
+    <form class="rsvp-form fi" id="rsvp-form-w" name="rsvp" method="POST" data-netlify="true" netlify-honeypot="bot-field">
       <input type="hidden" name="form-name" value="rsvp">
       <p style="display:none;"><input name="bot-field"></p>
 
@@ -891,29 +891,26 @@ table.atbl td { padding: 0.7rem 0.7rem; color: #bbb; border-bottom: 1px solid rg
       <div class="frow">
         <div class="fg"><label>Teléfono</label><input type="tel" name="telefono" placeholder="+34 600 000 000"></div>
         <div class="fg">
-          <label>Número de acompañantes</label>
-          <select name="acompanantes" id="f-ac" onchange="toggleAc()">
-            <option value="0">Solo yo</option>
-            <option value="1">+ 1 persona</option>
-            <option value="2">+ 2 personas</option>
-            <option value="3">+ 3 personas</option>
-            <option value="4">+ 4 personas</option>
-          </select>
+          <label>Acompañantes</label>
+          <div class="rd-group">
+            <label><input type="radio" name="acompanantes" value="Solo yo" onclick="toggleAcomp(this)"> 🙋 Solo yo</label>
+            <label><input type="radio" name="acompanantes" value="+1 persona" onclick="toggleAcomp(this)"> 👫 + 1 persona</label>
+            <label><input type="radio" name="acompanantes" value="+1 con niños" onclick="toggleAcomp(this)"> 👨‍👩‍👧 + 1 con niños</label>
+          </div>
         </div>
       </div>
-      <div class="fg" id="ac-names" style="display:none;">
-        <label>Nombres de acompañantes</label>
-        <input type="text" name="nombres_acompanantes" id="f-ac-nom" placeholder="Nombre 1, Nombre 2...">
+      <div class="fg" id="ac-nombres" style="display:none;">
+        <label>Nombre del acompañante</label>
+        <input type="text" name="nombre_acompanante" placeholder="Nombre completo">
       </div>
-      <div class="fg">
-        <label>¿A qué eventos asistes?</label>
-        <div class="ck-group">
-          <label><input type="checkbox" name="eventos" value="Ceremonia"> 💍 Ceremonia</label>
-          <label><input type="checkbox" name="eventos" value="Cóctel"> 🥂 Cóctel</label>
-          <label><input type="checkbox" name="eventos" value="Cena viernes"> 🍽 Cena Jueves</label>
-          <label><input type="checkbox" name="eventos" value="Fiesta"> 🎉 Fiesta</label>
-          <label><input type="checkbox" name="eventos" value="Comida Ritz"> 🏨 Comida Ritz</label>
-        </div>
+      <div class="fg" id="ac-ninos" style="display:none;">
+        <label>¿Cuántos niños?</label>
+        <select name="num_ninos">
+          <option value="1">1 niño</option>
+          <option value="2">2 niños</option>
+          <option value="3">3 niños</option>
+          <option value="4">4 niños</option>
+        </select>
       </div>
       <div class="fg">
         <label>Tu menú</label>
@@ -922,22 +919,19 @@ table.atbl td { padding: 0.7rem 0.7rem; color: #bbb; border-bottom: 1px solid rg
           <label><input type="radio" name="menu" value="Vegetariano"> Vegetariano</label>
           <label><input type="radio" name="menu" value="Vegano"> Vegano</label>
           <label><input type="radio" name="menu" value="Sin gluten"> Sin gluten</label>
-          <label><input type="radio" name="menu" value="Alergia"> ⚠ Alergia</label>
+          <label><input type="radio" name="menu" value="Alergia" onclick="document.getElementById('alerg-f').style.display='block'"> ⚠ Alergia</label>
         </div>
       </div>
       <div class="fg" id="alerg-f" style="display:none;">
         <label>Especifica tu alergia o intolerancia</label>
-        <input type="text" name="alergia" id="f-alerg" placeholder="Frutos secos, lácteos...">
-      </div>
-      <div class="fg">
-        <label>Menú de acompañantes</label>
-        <input type="text" name="menu_acompanantes" placeholder="Ej: Pedro — Normal, Ana — Vegetariano">
+        <input type="text" name="alergia" placeholder="Frutos secos, lácteos...">
       </div>
       <div class="fg">
         <label>¿Necesitas transporte desde Madrid?</label>
         <div class="rd-group">
           <label><input type="radio" name="transporte" value="Sí"> 🚌 Sí, me apunto al autobús</label>
           <label><input type="radio" name="transporte" value="No"> 🚗 No, voy por mi cuenta</label>
+          <label><input type="radio" name="transporte" value="Aún no sé"> 🤔 Aún no estoy seguro</label>
         </div>
       </div>
       <div class="fg">
@@ -1096,9 +1090,10 @@ function setupForm(){
   });
 }
 
-function toggleAc(){
-  const n=parseInt(document.getElementById('f-ac').value);
-  document.getElementById('ac-names').style.display=n>0?'block':'none';
+function toggleAcomp(el) {
+  const val = el.value;
+  document.getElementById('ac-nombres').style.display = (val === '+1 persona' || val === '+1 con niños') ? 'block' : 'none';
+  document.getElementById('ac-ninos').style.display = val === '+1 con niños' ? 'block' : 'none';
 }
 
 function openLb(i){ document.getElementById('lb-img').src=window.stripSrcs[i]; document.getElementById('lightbox').classList.add('active'); }
