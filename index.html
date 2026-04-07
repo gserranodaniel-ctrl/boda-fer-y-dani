@@ -957,14 +957,15 @@ function loadRealPhotos(){
   // Las imágenes adjuntas se convierten a URLs data para usarlas en la web
   // Aquí mapeamos las imágenes adjuntas (el sistema las pasa como blob urls)
   // Usamos picsum como fallback elegante hasta que se sustituyan
+  const base = 'https://gserranodaniel-ctrl.github.io/boda-fer-y-dani/';
   const imgs = {
-    'img-h1': 'https://picsum.photos/seed/df_table/800/600',
-    'img-h2': 'https://picsum.photos/seed/df_madrid/600/400',
-    'img-h3': 'https://picsum.photos/seed/df_vineyard/600/400',
-    'ps0':    'https://picsum.photos/seed/df_table/900/700',
-    'ps1':    'https://picsum.photos/seed/df_madrid/900/700',
-    'ps2':    'https://picsum.photos/seed/df_vineyard/900/700',
-    'ps3':    'https://picsum.photos/seed/df_selfie/900/700',
+    'img-h1':  base + 'foto1.jpeg',
+    'img-h2':  base + 'foto2.jpeg',
+    'img-h3':  base + 'foto3.jpeg',
+    'ps0':     base + 'foto1.jpeg',
+    'ps1':     base + 'foto2.jpeg',
+    'ps2':     base + 'foto3.jpeg',
+    'ps3':     base + 'foto4.jpeg',
     'img-ritz':'https://picsum.photos/seed/ritz_df/700/300'
   };
   Object.entries(imgs).forEach(([id, src])=>{
@@ -973,10 +974,10 @@ function loadRealPhotos(){
   });
   // Store strip srcs for lightbox
   window.stripSrcs = [
-    'https://picsum.photos/seed/df_table/1200/900',
-    'https://picsum.photos/seed/df_madrid/1200/900',
-    'https://picsum.photos/seed/df_vineyard/1200/900',
-    'https://picsum.photos/seed/df_selfie/1200/900'
+    base + 'foto1.jpeg',
+    base + 'foto2.jpeg',
+    base + 'foto3.jpeg',
+    base + 'foto4.jpeg'
   ];
 }
 
