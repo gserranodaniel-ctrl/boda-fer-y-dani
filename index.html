@@ -880,17 +880,84 @@ table.atbl td { padding: 0.7rem 0.7rem; color: #bbb; border-bottom: 1px solid rg
     <div class="rule-center fi" style="justify-content:center;"><div class="line light"></div><div class="diamond light"></div><div class="line light"></div></div>
     <p class="fi" style="text-align:center;color:rgba(255,255,255,0.35);font-size:0.78rem;letter-spacing:0.1em;margin-top:0.5rem;">Por favor antes del <strong style="color:var(--gold)">1 de Mayo de 2025</strong></p>
 
-    <div class="rsvp-form fi" style="text-align:center;">
-      <p style="font-family:'Cormorant Garamond',serif; font-size:1.2rem; color:var(--text-mid); line-height:1.9; margin-bottom:2rem;">
-        Haz clic en el botón para confirmar tu asistencia.<br>
-        <span style="font-size:0.85rem; color:#888;">El formulario se abrirá en una nueva ventana.</span>
-      </p>
-      <a href="https://forms.gle/bpp4o2qLDUmj2kFW8" target="_blank" class="btn-primary" style="display:inline-block; text-decoration:none; padding:1rem 4rem;">
-        Confirmar asistencia
-      </a>
-      <p style="margin-top:2rem; font-size:0.75rem; color:#aaa; letter-spacing:0.1em;">
-        Por favor antes del <strong style="color:var(--dark-green)">1 de Abril de 2027</strong>
-      </p>
+    <form class="rsvp-form fi" id="rsvp-form-w" name="rsvp" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+      <input type="hidden" name="form-name" value="rsvp">
+      <p style="display:none;"><input name="bot-field"></p>
+
+      <div class="frow">
+        <div class="fg"><label>Nombre completo *</label><input type="text" name="nombre" placeholder="Tu nombre completo" required></div>
+        <div class="fg"><label>Email *</label><input type="email" name="email" placeholder="tu@email.com" required></div>
+      </div>
+      <div class="frow">
+        <div class="fg"><label>Teléfono</label><input type="tel" name="telefono" placeholder="+34 600 000 000"></div>
+        <div class="fg">
+          <label>Número de acompañantes</label>
+          <select name="acompanantes" id="f-ac" onchange="toggleAc()">
+            <option value="0">Solo yo</option>
+            <option value="1">+ 1 persona</option>
+            <option value="2">+ 2 personas</option>
+            <option value="3">+ 3 personas</option>
+            <option value="4">+ 4 personas</option>
+          </select>
+        </div>
+      </div>
+      <div class="fg" id="ac-names" style="display:none;">
+        <label>Nombres de acompañantes</label>
+        <input type="text" name="nombres_acompanantes" id="f-ac-nom" placeholder="Nombre 1, Nombre 2...">
+      </div>
+      <div class="fg">
+        <label>¿A qué eventos asistes?</label>
+        <div class="ck-group">
+          <label><input type="checkbox" name="eventos" value="Ceremonia"> 💍 Ceremonia</label>
+          <label><input type="checkbox" name="eventos" value="Cóctel"> 🥂 Cóctel</label>
+          <label><input type="checkbox" name="eventos" value="Cena viernes"> 🍽 Cena Jueves</label>
+          <label><input type="checkbox" name="eventos" value="Fiesta"> 🎉 Fiesta</label>
+          <label><input type="checkbox" name="eventos" value="Comida Ritz"> 🏨 Comida Ritz</label>
+        </div>
+      </div>
+      <div class="fg">
+        <label>Tu menú</label>
+        <div class="rd-group">
+          <label><input type="radio" name="menu" value="Normal"> Normal</label>
+          <label><input type="radio" name="menu" value="Vegetariano"> Vegetariano</label>
+          <label><input type="radio" name="menu" value="Vegano"> Vegano</label>
+          <label><input type="radio" name="menu" value="Sin gluten"> Sin gluten</label>
+          <label><input type="radio" name="menu" value="Alergia"> ⚠ Alergia</label>
+        </div>
+      </div>
+      <div class="fg" id="alerg-f" style="display:none;">
+        <label>Especifica tu alergia o intolerancia</label>
+        <input type="text" name="alergia" id="f-alerg" placeholder="Frutos secos, lácteos...">
+      </div>
+      <div class="fg">
+        <label>Menú de acompañantes</label>
+        <input type="text" name="menu_acompanantes" placeholder="Ej: Pedro — Normal, Ana — Vegetariano">
+      </div>
+      <div class="fg">
+        <label>¿Necesitas transporte desde Madrid?</label>
+        <div class="rd-group">
+          <label><input type="radio" name="transporte" value="Sí"> 🚌 Sí, me apunto al autobús</label>
+          <label><input type="radio" name="transporte" value="No"> 🚗 No, voy por mi cuenta</label>
+        </div>
+      </div>
+      <div class="fg">
+        <label>🎵 Canción que no puede faltar en la fiesta</label>
+        <input type="text" name="cancion" placeholder="Artista — Canción">
+      </div>
+      <div class="fg">
+        <label>💌 Mensaje para Daniel & Fernando</label>
+        <textarea name="mensaje" placeholder="Escríbeles lo que sientes..."></textarea>
+      </div>
+      <div class="form-foot">
+        <button type="submit" class="btn-primary">Confirmar asistencia</button>
+      </div>
+    </form>
+
+    <div id="rsvp-ok">
+      <div class="ok-rule"></div>
+      <h3>¡Gracias!</h3>
+      <p>Tu confirmación ha quedado registrada.<br>Nos vemos en el Castillo de Batres — va a ser una noche inolvidable.</p>
+      <span class="hashtag">#DanielYFernando2025</span>
     </div>
   </div>
 </section>
