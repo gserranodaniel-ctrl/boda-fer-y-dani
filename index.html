@@ -247,10 +247,7 @@ table.atbl td { padding:0.7rem 0.7rem; color:#bbb; border-bottom:1px solid rgba(
   const app = initializeApp(firebaseConfig);
   const db = getFirestore(app);
   // Generar links de calendario al enviar
-  document.querySelector('form[name="rsvp"]').addEventListener('submit', function() {
-    buildCalendarLinks();
-  });
-</script>
+}</script>
 </head>
 <body>
 
@@ -466,7 +463,7 @@ table.atbl td { padding:0.7rem 0.7rem; color:#bbb; border-bottom:1px solid rgba(
     <div class="rule-center fi"><div class="line"></div><div class="diamond"></div><div class="line"></div></div>
     <p class="fi" style="text-align:center;color:rgba(255,255,255,0.35);font-size:0.78rem;letter-spacing:0.1em;margin-top:0.5rem;">Por favor antes del <strong style="color:var(--gold)">1 de Abril de 2027</strong></p>
 
-    <form class="rsvp-form fi" name="rsvp" method="POST" action="/gracias.html" data-netlify="true" netlify-honeypot="bot-field">
+    <form class="rsvp-form fi" name="rsvp" method="POST" data-netlify="true" netlify-honeypot="bot-field" onsubmit="return false;">
       <input type="hidden" name="form-name" value="rsvp">
       <p style="display:none;"><input name="bot-field"></p>
 
@@ -538,7 +535,8 @@ table.atbl td { padding:0.7rem 0.7rem; color:#bbb; border-bottom:1px solid rgba(
         <textarea name="mensaje" placeholder="Escríbeles lo que sientes..."></textarea>
       </div>
       <div class="form-foot">
-        <button type="submit" class="btn-primary">Confirmar asistencia</button>
+        <p id="form-error" style="display:none;color:#c0392b;font-size:0.8rem;margin-bottom:1rem;letter-spacing:0.05em;">⚠ Por favor revisa los campos obligatorios antes de continuar.</p>
+        <button type="button" class="btn-primary" onclick="submitRsvp()">Confirmar asistencia</button>
       </div>
     </form>
   </div>
@@ -600,7 +598,83 @@ function toggleAcomp(el){
   document.getElementById('ac-ninos').style.display=v==='+1 con niños'?'block':'none';
 }
 
-function buildCalendarLinks() {
+function submitRsvp() {
+  const form = document.querySelector('form[name="rsvp"]');
+  const err  = document.getElementById('form-error');
+  let ok = true;
+
+  // Helpers
+  const val  = id => (document.getElementById(id)||{}).value?.trim() || '';
+  const radio = name => !!document.querySelector(`input[name="${name}"]:checked`);
+  const mark  = (id, bad) => {
+    const el = document.getElementById(id);
+    if (el) el.style.borderColor = bad ? '#c0392b' : 'rgba(29,74,50,0.25)';
+  };
+  const markRadio = (name, bad) => {
+    document.querySelectorAll(`input[name="${name}"]`).forEach(r => {
+      r.closest('label').style.borderColor = bad ? '#c0392b' : 'rgba(29,74,50,0.25)';
+    });
+  };
+
+  // Nombre
+  const nombre = val('f-nombre');
+  mark('f-nombre', !nombre); if (!nombre) ok = false;
+
+  // Teléfono
+  const tel = form.querySelector('input[name="telefono"]').value.trim();
+  form.querySelector('input[name="telefono"]').style.borderColor = tel ? 'rgba(29,74,50,0.25)' : '#c0392b';
+  if (!tel) ok = false;
+
+  // Fuera de Madrid
+  const fueraMadrid = radio('fuera_madrid');
+  markRadio('fuera_madrid', !fueraMadrid); if (!fueraMadrid) ok = false;
+
+  // Acompañantes
+  const acomp = radio('acompanantes');
+  markRadio('acompanantes', !acomp); if (!acomp) ok = false;
+
+  // Nombre acompañante (si visible)
+  if (document.getElementById('ac-nombres').style.display !== 'none') {
+    const nomAc = form.querySelector('input[name="nombre_acompanante"]').value.trim();
+    form.querySelector('input[name="nombre_acompanante"]').style.borderColor = nomAc ? 'rgba(29,74,50,0.25)' : '#c0392b';
+    if (!nomAc) ok = false;
+  }
+
+  // Menú
+  const menu = radio('menu');
+  markRadio('menu', !menu); if (!menu) ok = false;
+
+  // Alergia (si visible)
+  if (document.getElementById('alerg-f').style.display !== 'none') {
+    const alerg = form.querySelector('input[name="alergia"]').value.trim();
+    form.querySelector('input[name="alergia"]').style.borderColor = alerg ? 'rgba(29,74,50,0.25)' : '#c0392b';
+    if (!alerg) ok = false;
+  }
+
+  // Transporte
+  const bus = radio('transporte');
+  markRadio('transporte', !bus); if (!bus) ok = false;
+
+  if (!ok) {
+    err.style.display = 'block';
+    form.scrollIntoView({behavior:'smooth', block:'start'});
+    return;
+  }
+
+  err.style.display = 'none';
+
+  // Enviar a Netlify en segundo plano via fetch
+  const data = new FormData(form);
+  fetch('/', { method:'POST', headers:{'Content-Type':'application/x-www-form-urlencoded'}, body: new URLSearchParams(data).toString() })
+    .catch(e => console.warn('Netlify form error:', e));
+
+  // Mostrar pantalla de éxito con botones de calendario
+  buildCalendarLinks();
+  document.querySelector('.rsvp-form').style.display = 'none';
+  const ok_div = document.getElementById('rsvp-ok');
+  ok_div.style.display = 'block';
+  ok_div.scrollIntoView({behavior:'smooth'});
+}
   const start1='20270528T163000Z', end1='20270529T020000Z';
   const start2='20270529T110000Z', end2='20270529T150000Z';
   const t1=encodeURIComponent('Boda Daniel & Fernando 💍');
