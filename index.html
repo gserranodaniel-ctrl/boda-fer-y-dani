@@ -202,25 +202,78 @@ footer .foot-quote { font-family:'Cormorant Garamond',serif; font-style:italic; 
 .fi { opacity:0; transform:translateY(25px); transition:opacity 0.8s ease,transform 0.8s ease; }
 .fi.in { opacity:1; transform:translateY(0); }
 
-/* RESPONSIVE */
-@media(max-width:900px) {
-  .historia-layout,.programa-grid,.loc-cards { grid-template-columns:1fr; }
+/* RESPONSIVE — TABLET */
+@media(max-width:1024px) {
   .info-grid { grid-template-columns:1fr 1fr; }
   .info-cell:nth-child(2n) { border-right:none; }
   .info-cell { border-bottom:1px solid rgba(29,74,50,0.12); }
-  .info-cell:last-child { border-bottom:none; }
+  .info-cell:nth-last-child(-n+2) { border-bottom:none; }
 }
-@media(max-width:640px) {
+
+@media(max-width:900px) {
+  .historia-layout { grid-template-columns:1fr; gap:3rem; }
+  .historia-photo { height:400px; }
+  .programa-grid { grid-template-columns:1fr; gap:2rem; }
+  .loc-cards { grid-template-columns:1fr; max-width:500px; }
   nav { padding:1rem 1.5rem; }
-  nav ul { display:none; flex-direction:column; position:absolute; top:100%; left:0; width:100%; background:var(--black); padding:1.5rem; border-bottom:1px solid rgba(196,165,90,0.2); }
+  nav ul { display:none; flex-direction:column; position:absolute; top:100%; left:0; width:100%; background:var(--black); padding:1.5rem; gap:1rem; border-bottom:1px solid rgba(196,165,90,0.2); }
   nav ul.open { display:flex; }
   .hamburger { display:flex; }
+}
+
+/* RESPONSIVE — MÓVIL */
+@media(max-width:640px) {
+  /* NAV */
+  nav { padding:1rem 1.2rem; }
+
+  /* HERO */
+  #hero { padding:7rem 1.5rem 4rem; }
+  #hero h1 { font-size:clamp(3rem,15vw,5rem); }
+  .hero-date-line { flex-direction:column; gap:0.4rem; }
+  .hero-date-line .date-text { font-size:0.95rem; }
+  .hero-rule-h { display:none; }
+  .countdown { gap:1rem; }
+  .count-num { font-size:2.2rem; }
+  .count-sep { font-size:2rem; }
+
+  /* HISTORIA */
+  section { padding:4rem 1.2rem; }
+  .historia-layout { gap:2rem; }
+  .historia-photo { height:300px; }
+  .historia-text p { font-size:1.05rem; }
+
+  /* PROGRAMA */
+  .dia-head { padding:1.5rem 1.5rem 1rem; }
+  .tl { padding:1.5rem; }
+  .tl-row { grid-template-columns:42px 14px 1fr; gap:0 0.7rem; margin-bottom:1.4rem; }
+
+  /* LOCALIZACIONES */
+  .loc-cards { max-width:100%; }
+  .loc-card-img { height:180px; }
+
+  /* INFO */
   .info-grid { grid-template-columns:1fr; }
-  .info-cell { border-right:none !important; }
-  .frow { grid-template-columns:1fr; }
-  .rsvp-form { padding:2rem 1.5rem; }
-  .dc-grid { grid-template-columns:1fr; }
-  .cal-btns { flex-direction:column; align-items:center; }
+  .info-cell { border-right:none !important; border-bottom:1px solid rgba(29,74,50,0.12) !important; padding:2rem 1.5rem; }
+  .info-cell:last-child { border-bottom:none !important; }
+
+  /* DRESSCODE POPUP */
+  .dc-inner { padding:2rem 1.5rem; }
+  .dc-grid { grid-template-columns:1fr 1fr; gap:0.6rem; }
+
+  /* RSVP */
+  .rsvp-form { padding:2rem 1.2rem; margin:2rem 0 0; }
+  .frow { grid-template-columns:1fr; gap:0; }
+  .rd-group { gap:0.4rem; }
+  .rd-group label { font-size:0.72rem; padding:0.5rem 0.8rem; }
+  .form-foot .btn-primary { padding:1rem 2rem; width:100%; }
+  #rsvp-ok { padding:2.5rem 1.5rem; margin:2rem 0 0; }
+  #rsvp-ok h3 { font-size:2rem; }
+  .cal-btns { flex-direction:column; align-items:stretch; }
+  .cal-btn { justify-content:center; }
+
+  /* FOOTER */
+  footer { padding:3rem 1.5rem; }
+  .foot-mono { font-size:2.2rem; }
 }
 </style>
 </head>
