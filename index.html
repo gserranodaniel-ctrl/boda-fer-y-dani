@@ -153,7 +153,8 @@ section { padding:6rem 2rem; }
 .info-num { font-family:'Cormorant Garamond',serif; font-size:2.5rem; font-weight:200; color:rgba(29,74,50,0.2); display:block; line-height:1; margin-bottom:0.8rem; }
 .info-cell h4 { font-family:'Cormorant Garamond',serif; font-size:1.15rem; font-weight:500; color:var(--dark-green); margin-bottom:0.8rem; }
 .info-cell p { font-size:0.82rem; color:var(--text-mid); line-height:1.8; }
-.btn-small { display:inline-block; margin-top:0.8rem; border:1px solid var(--mid-green); color:var(--mid-green); padding:0.4rem 1rem; font-size:0.65rem; letter-spacing:0.2em; text-transform:uppercase; cursor:pointer; background:transparent; transition:all 0.2s; }
+/* CALENDAR BUTTONS */
+.btn-small { display:inline-block; margin-top:0.8rem; border:1px solid var(--mid-green); color:var(--mid-green); padding:0.5rem 1.2rem; font-size:0.65rem; letter-spacing:0.2em; text-transform:uppercase; cursor:pointer; background:transparent; transition:all 0.2s; font-family:'Montserrat',sans-serif; }
 .btn-small:hover { background:var(--mid-green); color:var(--white); }
 
 /* CONTACTO - tarjetas de los novios */
@@ -245,8 +246,10 @@ table.atbl td { padding:0.7rem 0.7rem; color:#bbb; border-bottom:1px solid rgba(
   const firebaseConfig = { apiKey:"AIzaSyAx0FEUsnaaj6Tmb4Wt6ZmCDYtKUMAjErk", authDomain:"boda-fernando-y-daniel.firebaseapp.com", projectId:"boda-fernando-y-daniel", storageBucket:"boda-fernando-y-daniel.firebasestorage.app", messagingSenderId:"748558136979", appId:"1:748558136979:web:9dca7ee780aafc73b27f66" };
   const app = initializeApp(firebaseConfig);
   const db = getFirestore(app);
-  window.fbAddRsvp = async (e) => { await addDoc(collection(db,"rsvp"),{...e,fecha:serverTimestamp()}); };
-  window.fbGetRsvp = async () => { const s=await getDocs(collection(db,"rsvp")); return s.docs.map(d=>({id:d.id,...d.data()})); };
+  // Generar links de calendario al enviar
+  document.querySelector('form[name="rsvp"]').addEventListener('submit', function() {
+    buildCalendarLinks();
+  });
 </script>
 </head>
 <body>
@@ -468,7 +471,7 @@ table.atbl td { padding:0.7rem 0.7rem; color:#bbb; border-bottom:1px solid rgba(
       <p style="display:none;"><input name="bot-field"></p>
 
       <div class="frow">
-        <div class="fg"><label>Nombre completo *</label><input type="text" name="nombre" placeholder="Tu nombre completo" required></div>
+        <div class="fg"><label>Nombre completo *</label><input type="text" name="nombre" id="f-nombre" placeholder="Tu nombre completo" required></div>
         <div class="fg"><label>Teléfono *</label><input type="tel" name="telefono" placeholder="+34 600 000 000" required></div>
       </div>
 
@@ -595,6 +598,35 @@ function toggleAcomp(el){
   const v=el.value;
   document.getElementById('ac-nombres').style.display=(v==='+1 persona'||v==='+1 con niños')?'block':'none';
   document.getElementById('ac-ninos').style.display=v==='+1 con niños'?'block':'none';
+}
+
+function buildCalendarLinks() {
+  const start1='20270528T163000Z', end1='20270529T020000Z';
+  const start2='20270529T110000Z', end2='20270529T150000Z';
+  const t1=encodeURIComponent('Boda Daniel & Fernando 💍');
+  const t2=encodeURIComponent('Comida Daniel & Fernando · Ritz Madrid 🥂');
+  const l1=encodeURIComponent('Castillo de Batres, Batres, Madrid');
+  const l2=encodeURIComponent('Hotel Ritz Madrid, Plaza de la Lealtad 5, Madrid');
+  const d=encodeURIComponent('¡Nos casamos! #DanielYFernando2027');
+
+  document.getElementById('cal-google').href=
+    `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${t1}&dates=${start1}/${end1}&location=${l1}&details=${d}`;
+
+  const ics=[
+    'BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//Daniel&Fernando//Boda2027//ES',
+    'BEGIN:VEVENT',`DTSTART:${start1}`,`DTEND:${end1}`,
+    'SUMMARY:Boda Daniel & Fernando 💍',`LOCATION:Castillo de Batres, Batres, Madrid`,
+    'DESCRIPTION:#DanielYFernando2027','END:VEVENT',
+    'BEGIN:VEVENT',`DTSTART:${start2}`,`DTEND:${end2}`,
+    'SUMMARY:Comida Daniel & Fernando · Ritz Madrid 🥂',`LOCATION:Hotel Ritz Madrid, Plaza de la Lealtad 5, Madrid`,
+    'DESCRIPTION:#DanielYFernando2027','END:VEVENT',
+    'END:VCALENDAR'
+  ].join('\r\n');
+
+  const blob=new Blob([ics],{type:'text/calendar;charset=utf-8'});
+  const el=document.getElementById('cal-ics');
+  el.href=URL.createObjectURL(blob);
+  el.download='boda-daniel-y-fernando-2027.ics';
 }
 </script>
 </body>
