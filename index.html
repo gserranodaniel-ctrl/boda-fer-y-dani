@@ -23,8 +23,8 @@
 }
 
 * { margin:0; padding:0; box-sizing:border-box; }
-html { scroll-behavior: smooth; }
-body { font-family: 'Montserrat', sans-serif; background: var(--off-white); color: var(--text-dark); overflow-x: hidden; }
+html { scroll-behavior:smooth; }
+body { font-family:'Montserrat',sans-serif; background:var(--off-white); color:var(--text-dark); overflow-x:hidden; }
 
 /* LOGIN */
 #login-screen { position:fixed; inset:0; z-index:9999; background:var(--dark-green); display:flex; align-items:center; justify-content:center; }
@@ -39,7 +39,7 @@ body { font-family: 'Montserrat', sans-serif; background: var(--off-white); colo
 .login-box input:focus { border-color:var(--gold); }
 .btn-primary { background:transparent; border:1px solid var(--gold); color:var(--gold); padding:0.9rem 2.5rem; font-family:'Montserrat',sans-serif; font-size:0.72rem; font-weight:400; letter-spacing:0.35em; text-transform:uppercase; cursor:pointer; width:100%; margin-top:0.5rem; transition:all 0.3s; }
 .btn-primary:hover { background:var(--gold); color:var(--black); }
-.login-error { color:#c0392b; font-size:0.75rem; margin-top:0.8rem; display:none; letter-spacing:0.05em; }
+.login-error { color:#c0392b; font-size:0.75rem; margin-top:0.8rem; display:none; }
 
 /* NAV */
 nav { position:fixed; top:0; width:100%; z-index:100; background:rgba(10,10,10,0.96); backdrop-filter:blur(12px); border-bottom:1px solid rgba(196,165,90,0.2); padding:1.2rem 3rem; display:flex; align-items:center; justify-content:space-between; }
@@ -55,7 +55,7 @@ nav ul a:hover { color:var(--gold); }
 .hero-bg { position:absolute; inset:0; background:radial-gradient(ellipse at center,rgba(29,74,50,0.3) 0%,transparent 70%); }
 .hero-rule { width:1px; height:80px; background:linear-gradient(to bottom,transparent,var(--gold)); margin:0 auto 2rem; }
 .hero-tag { font-size:0.65rem; letter-spacing:0.5em; text-transform:uppercase; color:var(--gold); margin-bottom:2rem; }
-#hero h1 { font-family:'Cormorant Garamond',serif; font-size:clamp(4rem,10vw,8rem); font-weight:300; color:var(--white); line-height:0.9; letter-spacing:-0.02em; position:relative; }
+#hero h1 { font-family:'Cormorant Garamond',serif; font-size:clamp(4rem,10vw,8rem); font-weight:300; color:var(--white); line-height:0.9; letter-spacing:-0.02em; }
 #hero h1 .amp { font-style:italic; color:var(--gold); font-size:0.7em; display:block; margin:0.3em 0; }
 .hero-date-block { margin:2.5rem 0; }
 .hero-date-line { display:flex; align-items:center; gap:1.5rem; justify-content:center; }
@@ -77,28 +77,24 @@ section { padding:6rem 2rem; }
 .section-label { font-size:0.62rem; letter-spacing:0.45em; text-transform:uppercase; color:var(--gold); display:block; text-align:center; margin-bottom:1rem; }
 .section-title { font-family:'Cormorant Garamond',serif; font-size:clamp(2.5rem,5vw,3.5rem); font-weight:300; text-align:center; line-height:1.1; }
 .section-title em { font-style:italic; }
+.section-title.dark { color:var(--text-dark); }
+.section-title.light { color:var(--cream); }
 .rule-center { display:flex; align-items:center; gap:1rem; justify-content:center; margin:1.5rem auto; width:fit-content; }
-.rule-center .line { width:60px; height:1px; }
-.rule-center .diamond { width:6px; height:6px; transform:rotate(45deg); }
-.rule-center .line.dark,.rule-center .diamond.dark { background:var(--gold); }
-.rule-center .line.light,.rule-center .diamond.light { background:var(--gold); }
+.rule-center .line { width:60px; height:1px; background:var(--gold); }
+.rule-center .diamond { width:6px; height:6px; transform:rotate(45deg); background:var(--gold); }
 .container { max-width:1100px; margin:0 auto; }
 
-/* HISTORIA */
+/* HISTORIA — una foto grande a la derecha */
 #historia { background:var(--off-white); }
-.section-title.dark { color:var(--text-dark); }
 .historia-layout { display:grid; grid-template-columns:1fr 1fr; gap:5rem; align-items:center; margin-top:4rem; }
 .historia-text p { font-family:'Cormorant Garamond',serif; font-size:1.2rem; font-weight:400; line-height:2; color:var(--text-mid); margin-bottom:1.5rem; }
 .historia-text .firma { font-family:'Cormorant Garamond',serif; font-style:italic; font-size:1.1rem; color:var(--light-green); margin-top:2rem; }
-.historia-photos { display:grid; grid-template-columns:1fr 1fr; grid-template-rows:300px 200px; gap:0.8rem; }
-.hp { overflow:hidden; }
-.hp:first-child { grid-column:span 2; }
-.hp img { width:100%; height:100%; object-fit:cover; filter:grayscale(20%) contrast(1.05); transition:transform 0.6s ease,filter 0.4s; display:block; cursor:pointer; }
-.hp:hover img { transform:scale(1.04); filter:grayscale(0%) contrast(1.05); }
+.historia-photo { overflow:hidden; height:600px; }
+.historia-photo img { width:100%; height:100%; object-fit:cover; filter:grayscale(10%) contrast(1.05); transition:transform 0.6s; cursor:pointer; display:block; }
+.historia-photo:hover img { transform:scale(1.03); }
 
 /* PROGRAMA */
 #programa { background:var(--dark-green); }
-.section-title.light { color:var(--cream); }
 .programa-grid { display:grid; grid-template-columns:1fr 1fr; gap:3rem; margin-top:4rem; }
 .dia-card { border:1px solid rgba(196,165,90,0.25); background:rgba(0,0,0,0.3); }
 .dia-head { padding:2rem 2.5rem 1.5rem; border-bottom:1px solid rgba(196,165,90,0.2); text-align:center; }
@@ -106,17 +102,17 @@ section { padding:6rem 2rem; }
 .dia-head h3 { font-family:'Cormorant Garamond',serif; font-size:1.1rem; font-weight:300; color:var(--cream); letter-spacing:0.2em; text-transform:uppercase; margin-top:0.3rem; }
 .dia-head p { font-size:0.7rem; color:var(--sage); letter-spacing:0.2em; margin-top:0.3rem; }
 .tl { padding:2rem 2.5rem; }
-.tl-row { display:grid; grid-template-columns:50px 16px 1fr; gap:0 1rem; margin-bottom:1.8rem; align-items:start; position:relative; }
+.tl-row { display:grid; grid-template-columns:50px 16px 1fr; gap:0 1rem; margin-bottom:1.8rem; align-items:start; }
 .tl-row:not(:last-child) .tl-track { position:relative; }
 .tl-row:not(:last-child) .tl-track::after { content:''; position:absolute; left:50%; top:16px; transform:translateX(-50%); width:1px; height:calc(100% + 1.8rem); background:rgba(196,165,90,0.25); }
 .tl-time { font-family:'Cormorant Garamond',serif; font-size:0.9rem; color:var(--gold); padding-top:1px; text-align:right; }
 .tl-track { display:flex; justify-content:center; padding-top:3px; }
 .tl-dot { width:10px; height:10px; border:1px solid var(--gold); background:var(--dark-green); transform:rotate(45deg); flex-shrink:0; }
 .tl-body h4 { font-family:'Cormorant Garamond',serif; font-size:1.05rem; font-weight:500; color:var(--cream); }
-.tl-body p { font-size:0.72rem; color:var(--sage); margin-top:0.2rem; letter-spacing:0.05em; }
+.tl-body p { font-size:0.72rem; color:var(--sage); margin-top:0.2rem; }
 
 /* LOCALIZACIONES */
-#localizaciones { background:var(--black); padding:6rem 2rem; }
+#localizaciones { background:var(--black); }
 .loc-cards { display:grid; grid-template-columns:1fr 1fr; gap:2rem; max-width:900px; margin:4rem auto 0; }
 .loc-card-new { border:1px solid rgba(196,165,90,0.25); background:rgba(255,255,255,0.03); overflow:hidden; transition:transform 0.3s; }
 .loc-card-new:hover { transform:translateY(-4px); }
@@ -130,35 +126,43 @@ section { padding:6rem 2rem; }
 .btn-ghost { display:inline-block; border:1px solid rgba(196,165,90,0.5); color:var(--gold); text-decoration:none; padding:0.6rem 1.5rem; font-size:0.65rem; letter-spacing:0.25em; text-transform:uppercase; transition:all 0.3s; }
 .btn-ghost:hover { background:var(--gold); color:var(--black); border-color:var(--gold); }
 
-/* FOTOS — quitada, solo historia */
-
-/* INFO */
-#info { background:var(--cream); }
-.info-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:0; margin-top:4rem; border:1px solid rgba(29,74,50,0.15); }
-.info-cell { padding:2.5rem 2rem; border-right:1px solid rgba(29,74,50,0.12); border-bottom:1px solid rgba(29,74,50,0.12); transition:background 0.3s; position:relative; }
-.info-cell:hover { background:rgba(29,74,50,0.04); }
-.info-cell:nth-child(3n) { border-right:none; }
-.info-cell:nth-last-child(-n+3) { border-bottom:none; }
-.info-num { font-family:'Cormorant Garamond',serif; font-size:2.5rem; font-weight:200; color:rgba(29,74,50,0.2); display:block; line-height:1; margin-bottom:0.8rem; }
-.info-cell h4 { font-family:'Cormorant Garamond',serif; font-size:1.15rem; font-weight:500; color:var(--dark-green); margin-bottom:0.8rem; letter-spacing:0.05em; }
-.info-cell p { font-size:0.82rem; color:var(--text-mid); line-height:1.8; }
-.btn-small { display:inline-block; margin-top:0.8rem; border:1px solid var(--mid-green); color:var(--mid-green); padding:0.4rem 1rem; font-size:0.65rem; letter-spacing:0.2em; text-transform:uppercase; cursor:pointer; background:transparent; transition:all 0.2s; }
-.btn-small:hover { background:var(--mid-green); color:var(--white); }
+/* LIGHTBOX */
+#lightbox { display:none; position:fixed; inset:0; z-index:9998; background:rgba(0,0,0,0.97); align-items:center; justify-content:center; }
+#lightbox.active { display:flex; }
+#lightbox img { max-width:88vw; max-height:88vh; }
+#lb-close { position:absolute; top:2rem; right:2.5rem; color:var(--gold); font-size:1.5rem; cursor:pointer; opacity:0.7; transition:opacity 0.2s; }
+#lb-close:hover { opacity:1; }
 
 /* DRESSCODE POPUP */
 #dresscode-popup { display:none; position:fixed; inset:0; z-index:9995; background:rgba(0,0,0,0.92); align-items:center; justify-content:center; }
 #dresscode-popup.active { display:flex; }
 .dc-inner { background:var(--off-white); max-width:700px; width:90%; padding:3rem; position:relative; max-height:90vh; overflow-y:auto; }
 .dc-inner h3 { font-family:'Cormorant Garamond',serif; font-size:2rem; font-weight:300; color:var(--dark-green); margin-bottom:0.5rem; }
-.dc-inner .dc-sub { font-size:0.72rem; color:var(--gold); letter-spacing:0.25em; text-transform:uppercase; margin-bottom:1.5rem; display:block; }
+.dc-sub { font-size:0.72rem; color:var(--gold); letter-spacing:0.25em; text-transform:uppercase; margin-bottom:1.5rem; display:block; }
 .dc-grid { display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-top:1.5rem; }
 .dc-grid img { width:100%; aspect-ratio:3/4; object-fit:cover; filter:grayscale(15%); }
 .dc-note { font-size:0.8rem; color:var(--text-mid); line-height:1.8; margin-top:1.2rem; padding:1rem; background:rgba(29,74,50,0.06); border-left:2px solid var(--gold); }
-#dc-close { position:absolute; top:1rem; right:1.5rem; background:none; border:none; font-size:1.5rem; color:var(--text-mid); cursor:pointer; font-family:serif; }
+#dc-close { position:absolute; top:1rem; right:1.5rem; background:none; border:none; font-size:1.5rem; color:var(--text-mid); cursor:pointer; }
 
-/* MAPA */
-.map-wrap { margin-top:1rem; border:1px solid rgba(29,74,50,0.2); overflow:hidden; }
-.map-wrap iframe { width:100%; height:200px; display:block; border:none; filter:grayscale(30%); }
+/* INFO */
+#info { background:var(--cream); }
+.info-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:0; margin-top:4rem; border:1px solid rgba(29,74,50,0.15); }
+.info-cell { padding:2.5rem 2rem; border-right:1px solid rgba(29,74,50,0.12); border-bottom:1px solid rgba(29,74,50,0.12); transition:background 0.3s; }
+.info-cell:hover { background:rgba(29,74,50,0.04); }
+.info-cell:nth-child(3n) { border-right:none; }
+.info-cell:nth-last-child(-n+3) { border-bottom:none; }
+.info-num { font-family:'Cormorant Garamond',serif; font-size:2.5rem; font-weight:200; color:rgba(29,74,50,0.2); display:block; line-height:1; margin-bottom:0.8rem; }
+.info-cell h4 { font-family:'Cormorant Garamond',serif; font-size:1.15rem; font-weight:500; color:var(--dark-green); margin-bottom:0.8rem; }
+.info-cell p { font-size:0.82rem; color:var(--text-mid); line-height:1.8; }
+.btn-small { display:inline-block; margin-top:0.8rem; border:1px solid var(--mid-green); color:var(--mid-green); padding:0.4rem 1rem; font-size:0.65rem; letter-spacing:0.2em; text-transform:uppercase; cursor:pointer; background:transparent; transition:all 0.2s; }
+.btn-small:hover { background:var(--mid-green); color:var(--white); }
+
+/* CONTACTO - tarjetas de los novios */
+.contact-cards { display:grid; grid-template-columns:1fr 1fr; gap:1.5rem; margin-top:1rem; }
+.contact-card { display:flex; align-items:center; gap:1rem; background:rgba(29,74,50,0.06); padding:1rem; border-left:2px solid var(--gold); }
+.contact-card img { width:52px; height:52px; border-radius:50%; object-fit:cover; filter:grayscale(20%); flex-shrink:0; }
+.contact-card .cc-info { font-size:0.8rem; color:var(--text-mid); line-height:1.7; }
+.contact-card .cc-name { font-family:'Cormorant Garamond',serif; font-size:1rem; color:var(--dark-green); font-weight:500; display:block; }
 
 /* RSVP */
 #rsvp { background:var(--black); position:relative; overflow:hidden; }
@@ -174,7 +178,7 @@ section { padding:6rem 2rem; }
 .fg input:focus,.fg select:focus,.fg textarea:focus { border-color:var(--mid-green); }
 .fg textarea { resize:vertical; min-height:90px; }
 .rd-group { display:flex; flex-wrap:wrap; gap:0.5rem; margin-top:0.5rem; }
-.rd-group label { display:flex; align-items:center; gap:0.4rem; font-size:0.75rem; letter-spacing:0.05em; text-transform:none; color:var(--text-dark); cursor:pointer; padding:0.5rem 1rem; border:1px solid rgba(29,74,50,0.25); background:var(--white); transition:all 0.2s; }
+.rd-group label { display:flex; align-items:center; gap:0.4rem; font-size:0.75rem; letter-spacing:0.05em; text-transform:none; color:var(--text-dark); cursor:pointer; padding:0.5rem 1rem; border:1px solid rgba(29,74,50,0.25); background:var(--white); transition:all 0.2s; white-space:nowrap; }
 .rd-group label:has(input:checked) { background:var(--dark-green); color:var(--cream); border-color:var(--dark-green); }
 .rd-group input { display:none; }
 .form-foot { text-align:center; margin-top:2.5rem; }
@@ -183,14 +187,7 @@ section { padding:6rem 2rem; }
 #rsvp-ok .ok-rule { width:1px; height:60px; background:var(--gold); margin:0 auto 2rem; }
 #rsvp-ok h3 { font-family:'Cormorant Garamond',serif; font-size:2.5rem; font-weight:300; color:var(--dark-green); margin-bottom:1rem; }
 #rsvp-ok p { color:var(--text-mid); font-size:0.9rem; line-height:1.9; }
-#rsvp-ok .hashtag { font-family:'Cormorant Garamond',serif; font-size:1.1rem; color:var(--gold); margin-top:1.5rem; display:block; letter-spacing:0.15em; }
-
-/* LIGHTBOX */
-#lightbox { display:none; position:fixed; inset:0; z-index:9998; background:rgba(0,0,0,0.97); align-items:center; justify-content:center; }
-#lightbox.active { display:flex; }
-#lightbox img { max-width:88vw; max-height:88vh; }
-#lb-close { position:absolute; top:2rem; right:2.5rem; color:var(--gold); font-size:1.5rem; cursor:pointer; font-family:serif; letter-spacing:0.2em; opacity:0.7; transition:opacity 0.2s; }
-#lb-close:hover { opacity:1; }
+#rsvp-ok .hashtag { font-family:'Cormorant Garamond',serif; font-size:1.1rem; color:var(--gold); margin-top:1.5rem; display:block; }
 
 /* FOOTER */
 footer { background:var(--dark-green); text-align:center; padding:4rem 2rem; border-top:1px solid rgba(196,165,90,0.2); }
@@ -225,7 +222,7 @@ table.atbl td { padding:0.7rem 0.7rem; color:#bbb; border-bottom:1px solid rgba(
 
 /* RESPONSIVE */
 @media(max-width:900px) {
-  .historia-layout,.programa-grid,.loc-cards { grid-template-columns:1fr; }
+  .historia-layout,.programa-grid,.loc-cards,.contact-cards { grid-template-columns:1fr; }
   .info-grid { grid-template-columns:1fr 1fr; }
   .info-cell:nth-child(3n) { border-right:1px solid rgba(29,74,50,0.12); }
   .info-cell:nth-child(2n) { border-right:none; }
@@ -243,22 +240,14 @@ table.atbl td { padding:0.7rem 0.7rem; color:#bbb; border-bottom:1px solid rgba(
 }
 </style>
 
-<!-- Firebase -->
 <script type="module">
   import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
   import { getFirestore, collection, addDoc, getDocs, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
-  const firebaseConfig = {
-    apiKey: "AIzaSyAx0FEUsnaaj6Tmb4Wt6ZmCDYtKUMAjErk",
-    authDomain: "boda-fernando-y-daniel.firebaseapp.com",
-    projectId: "boda-fernando-y-daniel",
-    storageBucket: "boda-fernando-y-daniel.firebasestorage.app",
-    messagingSenderId: "748558136979",
-    appId: "1:748558136979:web:9dca7ee780aafc73b27f66"
-  };
+  const firebaseConfig = { apiKey:"AIzaSyAx0FEUsnaaj6Tmb4Wt6ZmCDYtKUMAjErk", authDomain:"boda-fernando-y-daniel.firebaseapp.com", projectId:"boda-fernando-y-daniel", storageBucket:"boda-fernando-y-daniel.firebasestorage.app", messagingSenderId:"748558136979", appId:"1:748558136979:web:9dca7ee780aafc73b27f66" };
   const app = initializeApp(firebaseConfig);
   const db = getFirestore(app);
-  window.fbAddRsvp = async (entry) => { await addDoc(collection(db, "rsvp"), { ...entry, fecha: serverTimestamp() }); };
-  window.fbGetRsvp = async () => { const snap = await getDocs(collection(db, "rsvp")); return snap.docs.map(d => ({ id: d.id, ...d.data() })); };
+  window.fbAddRsvp = async (e) => { await addDoc(collection(db,"rsvp"),{...e,fecha:serverTimestamp()}); };
+  window.fbGetRsvp = async () => { const s=await getDocs(collection(db,"rsvp")); return s.docs.map(d=>({id:d.id,...d.data()})); };
 </script>
 </head>
 <body>
@@ -301,9 +290,7 @@ table.atbl td { padding:0.7rem 0.7rem; color:#bbb; border-bottom:1px solid rgba(
       <div class="hero-rule-h"></div>
     </div>
     <div class="hero-date-line" style="margin-top:0.6rem">
-      <span>Castillo de Batres</span>
-      <span style="color:var(--gold)">·</span>
-      <span>Hotel Ritz Madrid</span>
+      <span>Castillo de Batres</span><span style="color:var(--gold)">·</span><span>Hotel Ritz Madrid</span>
     </div>
   </div>
   <div class="countdown">
@@ -323,7 +310,7 @@ table.atbl td { padding:0.7rem 0.7rem; color:#bbb; border-bottom:1px solid rgba(
   <div class="container">
     <span class="section-label fi">Nuestra historia</span>
     <h2 class="section-title dark fi">Todo empezó con <em>una espera</em></h2>
-    <div class="rule-center fi"><div class="line dark"></div><div class="diamond dark"></div><div class="line dark"></div></div>
+    <div class="rule-center fi"><div class="line"></div><div class="diamond"></div><div class="line"></div></div>
     <div class="historia-layout">
       <div class="historia-text fi">
         <p>Fernando llegó tarde. Lo que podría haber sido el peor comienzo fue, en realidad, el principio de la mejor historia que podíamos imaginar. Esa espera — que se hizo eterna y no duró nada — fue el primer minuto de todo lo que vino después.</p>
@@ -331,11 +318,8 @@ table.atbl td { padding:0.7rem 0.7rem; color:#bbb; border-bottom:1px solid rgba(
         <p>Hoy queremos celebrar ese amor rodeados de las personas que más queremos en el mundo. Que sepáis que si estáis en esta web, es porque sois parte de nuestra historia.</p>
         <p class="firma">— Con todo nuestro amor, Daniel & Fernando</p>
       </div>
-      <div class="historia-photos fi">
-        <div class="hp"><img src="https://gserranodaniel-ctrl.github.io/boda-fer-y-dani/foto1.jpeg" onclick="openLb('https://gserranodaniel-ctrl.github.io/boda-fer-y-dani/foto1.jpeg')" alt="Daniel y Fernando"></div>
-        <div class="hp"><img src="https://gserranodaniel-ctrl.github.io/boda-fer-y-dani/foto2.jpeg" onclick="openLb('https://gserranodaniel-ctrl.github.io/boda-fer-y-dani/foto2.jpeg')" alt="Pareja"></div>
-        <div class="hp"><img src="https://gserranodaniel-ctrl.github.io/boda-fer-y-dani/foto3.jpeg" onclick="openLb('https://gserranodaniel-ctrl.github.io/boda-fer-y-dani/foto3.jpeg')" alt="Pareja"></div>
-        <div class="hp"><img src="https://gserranodaniel-ctrl.github.io/boda-fer-y-dani/foto4.jpeg" onclick="openLb('https://gserranodaniel-ctrl.github.io/boda-fer-y-dani/foto4.jpeg')" alt="Pareja"></div>
+      <div class="historia-photo fi">
+        <img src="https://gserranodaniel-ctrl.github.io/boda-fer-y-dani/foto1.jpeg" onclick="openLb('https://gserranodaniel-ctrl.github.io/boda-fer-y-dani/foto1.jpeg')" alt="Daniel y Fernando">
       </div>
     </div>
   </div>
@@ -346,7 +330,7 @@ table.atbl td { padding:0.7rem 0.7rem; color:#bbb; border-bottom:1px solid rgba(
   <div class="container">
     <span class="section-label fi">El gran día</span>
     <h2 class="section-title light fi">Programa de <em>celebración</em></h2>
-    <div class="rule-center fi"><div class="line light"></div><div class="diamond light"></div><div class="line light"></div></div>
+    <div class="rule-center fi"><div class="line"></div><div class="diamond"></div><div class="line"></div></div>
     <div class="programa-grid">
       <div class="dia-card fi">
         <div class="dia-head">
@@ -383,7 +367,7 @@ table.atbl td { padding:0.7rem 0.7rem; color:#bbb; border-bottom:1px solid rgba(
   <div class="container">
     <span class="section-label fi">Dónde celebramos</span>
     <h2 class="section-title light fi">Los <em>lugares</em></h2>
-    <div class="rule-center fi"><div class="line light"></div><div class="diamond light"></div><div class="line light"></div></div>
+    <div class="rule-center fi"><div class="line"></div><div class="diamond"></div><div class="line"></div></div>
     <div class="loc-cards">
       <div class="loc-card-new fi">
         <div class="loc-card-img"><img src="https://gserranodaniel-ctrl.github.io/boda-fer-y-dani/foto5.jpeg" alt="Castillo de Batres"></div>
@@ -395,7 +379,7 @@ table.atbl td { padding:0.7rem 0.7rem; color:#bbb; border-bottom:1px solid rgba(
         </div>
       </div>
       <div class="loc-card-new fi">
-        <div class="loc-card-img"><img src="https://gserranodaniel-ctrl.github.io/boda-fer-y-dani/foto6.jpeg" alt="Hotel Ritz Madrid"></div>
+        <div class="loc-card-img"><img src="https://gserranodaniel-ctrl.github.io/boda-fer-y-dani/foto6.jpeg" alt="Hotel Ritz Madrid" onerror="this.src='https://picsum.photos/seed/ritz_fallback/800/400'"></div>
         <div class="loc-card-body">
           <span class="loc-tag">Sábado 29 de Mayo · 2027</span>
           <h3>Hotel Ritz Madrid</h3>
@@ -419,16 +403,14 @@ table.atbl td { padding:0.7rem 0.7rem; color:#bbb; border-bottom:1px solid rgba(
     <button id="dc-close" onclick="closeDresscode()">✕</button>
     <h3>Dress Code</h3>
     <span class="dc-sub">Inspiración para vuestra elección</span>
-    <p style="font-size:0.85rem;color:var(--text-mid);line-height:1.8;">Algunas ideas que encajan con el estilo de la noche. No son reglas, son inspiración — venid como os sintáis más vosotros.</p>
+    <p style="font-size:0.85rem;color:var(--text-mid);line-height:1.8;">Algunas ideas que encajan con el estilo de la noche. No son reglas, son inspiración.</p>
     <div class="dc-grid">
       <img src="https://picsum.photos/seed/dc1/400/533" alt="Look 1">
       <img src="https://picsum.photos/seed/dc2/400/533" alt="Look 2">
       <img src="https://picsum.photos/seed/dc3/400/533" alt="Look 3">
       <img src="https://picsum.photos/seed/dc4/400/533" alt="Look 4">
     </div>
-    <div class="dc-note">
-      <strong>Para la comida del Ritz (sábado)</strong> el ambiente es más relajado — unos vaqueros elegantes con una buena camisa o blusa están perfectos.
-    </div>
+    <div class="dc-note"><strong>Para la comida del Ritz (sábado)</strong> el ambiente es más relajado — unos vaqueros elegantes con una buena camisa o blusa están perfectos.</div>
   </div>
 </div>
 
@@ -437,41 +419,56 @@ table.atbl td { padding:0.7rem 0.7rem; color:#bbb; border-bottom:1px solid rgba(
   <div class="container">
     <span class="section-label fi">Todo lo que necesitas</span>
     <h2 class="section-title dark fi">Información <em>práctica</em></h2>
-    <div class="rule-center fi"><div class="line dark"></div><div class="diamond dark"></div><div class="line dark"></div></div>
+    <div class="rule-center fi"><div class="line"></div><div class="diamond"></div><div class="line"></div></div>
     <div class="info-grid fi">
       <div class="info-cell">
         <span class="info-num">01</span>
         <h4>Dress Code</h4>
-        <p>Formal elegante para la boda del viernes — vestido largo o midi para ellas, traje oscuro para ellos. Llevad un chal ligero para la noche en el jardín.<br>Para el Ritz del sábado, ambiente más relajado.</p>
+        <p>Formal elegante para el viernes — vestido largo o midi para ellas, traje oscuro para ellos. Llevad un chal ligero para la noche en el jardín.<br><br>Para el Ritz del sábado, ambiente más relajado.</p>
         <button class="btn-small" onclick="openDresscode()">Ver inspiración →</button>
       </div>
       <div class="info-cell">
         <span class="info-num">02</span>
         <h4>Alojamiento</h4>
-        <p>Si venís de fuera de Madrid, <strong>avisadnos antes de reservar nada</strong> — estamos gestionando opciones de alojamiento para los que viajáis. Indicadlo en el formulario de confirmación y os informamos.</p>
+        <p>Si venís de fuera de Madrid, <strong>avisadnos antes de reservar nada</strong> — estamos gestionando opciones para los que viajáis. Indicadlo en el formulario de confirmación y os informamos.</p>
       </div>
       <div class="info-cell">
         <span class="info-num">03</span>
         <h4>Cómo llegar al Castillo</h4>
-        <p>El Castillo de Batres está a 35 min de Madrid por la A-4. Habrá parking gratuito. Organizaremos autobús desde Madrid — confirma en el formulario.</p>
-        <div class="map-wrap">
-          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3041.5!2d-3.9186!3d40.1847!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd418b3b3b3b3b3b%3A0x0!2sCastillo+de+Batres!5e0!3m2!1ses!2ses!4v1620000000000" allowfullscreen="" loading="lazy"></iframe>
-        </div>
+        <p>El Castillo de Batres está a 35 min de Madrid por la A-4. Habrá parking gratuito. Organizaremos autobús desde Madrid — confírmalo en el formulario.</p>
+        <a class="btn-small" href="https://maps.google.com/?q=Castillo+de+Batres+Madrid" target="_blank" style="text-decoration:none;margin-top:0.8rem;display:inline-block;">Ver en Google Maps →</a>
       </div>
       <div class="info-cell">
         <span class="info-num">04</span>
         <h4>Cómo llegar al Ritz</h4>
-        <p>El Hotel Ritz está en el centro de Madrid. En metro: línea 2 estación <strong>Retiro</strong> o línea 1 estación <strong>Atocha</strong>, ambas a 5 min andando. También autobús líneas <strong>10, 14 y 27</strong> paran en la puerta.</p>
+        <p>En metro: línea 2 estación <strong>Retiro</strong> o línea 1 estación <strong>Atocha</strong>, ambas a 5 min andando. Autobús líneas <strong>10, 14 y 27</strong> paran en la puerta.</p>
+        <a class="btn-small" href="https://maps.google.com/?q=Hotel+Ritz+Madrid+Plaza+de+la+Lealtad" target="_blank" style="text-decoration:none;margin-top:0.8rem;display:inline-block;">Ver en Google Maps →</a>
       </div>
       <div class="info-cell">
         <span class="info-num">05</span>
         <h4>Lista de bodas</h4>
-        <p>Vuestra presencia es el mejor regalo. Si queréis contribuir a nuestro viaje de novios:<br><strong>ES00 0000 0000 0000 0000 0000</strong></p>
+        <p>Vuestra presencia es el mejor regalo. Si queréis contribuir a nuestro viaje de novios:<br><br><strong>ES00 0000 0000 0000 0000 0000</strong></p>
       </div>
       <div class="info-cell">
         <span class="info-num">06</span>
-        <h4>Captura el momento</h4>
-        <p>Habrá fotógrafo oficial, pero nos encantará ver vuestros momentos. Compartid vuestras fotos con<br><strong style="color:var(--dark-green);font-size:1rem;">#DanielYFernando2027</strong></p>
+        <h4>¿Alguna duda?</h4>
+        <p>Para cualquier cosa, escribidnos directamente:</p>
+        <div class="contact-cards">
+          <div class="contact-card">
+            <img src="https://gserranodaniel-ctrl.github.io/boda-fer-y-dani/foto4.jpeg" alt="Daniel">
+            <div class="cc-info">
+              <span class="cc-name">Daniel</span>
+              <a href="tel:+34645516876" style="color:var(--mid-green);text-decoration:none;">645 516 876</a>
+            </div>
+          </div>
+          <div class="contact-card">
+            <img src="https://gserranodaniel-ctrl.github.io/boda-fer-y-dani/foto2.jpeg" alt="Fernando">
+            <div class="cc-info">
+              <span class="cc-name">Fernando</span>
+              <a href="tel:+34649485472" style="color:var(--mid-green);text-decoration:none;">649 485 472</a>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -482,41 +479,40 @@ table.atbl td { padding:0.7rem 0.7rem; color:#bbb; border-bottom:1px solid rgba(
   <div class="container" style="position:relative;">
     <span class="section-label fi">¿Nos acompañas?</span>
     <h2 class="section-title light fi">Confirma tu <em>asistencia</em></h2>
-    <div class="rule-center fi"><div class="line light"></div><div class="diamond light"></div><div class="line light"></div></div>
+    <div class="rule-center fi"><div class="line"></div><div class="diamond"></div><div class="line"></div></div>
     <p class="fi" style="text-align:center;color:rgba(255,255,255,0.35);font-size:0.78rem;letter-spacing:0.1em;margin-top:0.5rem;">Por favor antes del <strong style="color:var(--gold)">1 de Abril de 2027</strong></p>
 
-    <form class="rsvp-form fi" id="rsvp-form-w" name="rsvp" method="POST" action="/gracias.html" data-netlify="true" netlify-honeypot="bot-field">
+    <form class="rsvp-form fi" name="rsvp" method="POST" action="/gracias.html" data-netlify="true" netlify-honeypot="bot-field">
       <input type="hidden" name="form-name" value="rsvp">
       <p style="display:none;"><input name="bot-field"></p>
 
       <div class="frow">
         <div class="fg"><label>Nombre completo *</label><input type="text" name="nombre" placeholder="Tu nombre completo" required></div>
-        <div class="fg"><label>Email *</label><input type="email" name="email" placeholder="tu@email.com" required></div>
+        <div class="fg"><label>Teléfono *</label><input type="tel" name="telefono" placeholder="+34 600 000 000" required></div>
       </div>
-      <div class="frow">
-        <div class="fg"><label>Teléfono</label><input type="tel" name="telefono" placeholder="+34 600 000 000"></div>
-        <div class="fg">
-          <label>¿Vienes de fuera de Madrid?</label>
-          <div class="rd-group">
-            <label><input type="radio" name="fuera_madrid" value="No"> 🏙 No, soy de Madrid</label>
-            <label><input type="radio" name="fuera_madrid" value="Sí"> 🚆 Sí, viajo a Madrid</label>
-          </div>
+
+      <div class="fg">
+        <label>¿Vienes de fuera de Madrid? *</label>
+        <div class="rd-group">
+          <label><input type="radio" name="fuera_madrid" value="No, soy de Madrid" required> 🏙 No, soy de Madrid</label>
+          <label><input type="radio" name="fuera_madrid" value="Sí, viajo a Madrid"> 🚆 Sí, viajo a Madrid</label>
         </div>
       </div>
+
       <div class="fg">
-        <label>Acompañantes</label>
+        <label>Acompañantes *</label>
         <div class="rd-group">
-          <label><input type="radio" name="acompanantes" value="Solo yo" onclick="toggleAcomp(this)"> 🙋 Solo yo</label>
+          <label><input type="radio" name="acompanantes" value="Solo yo" onclick="toggleAcomp(this)" required> 🙋 Solo yo</label>
           <label><input type="radio" name="acompanantes" value="+1 persona" onclick="toggleAcomp(this)"> 👫 + 1 persona</label>
           <label><input type="radio" name="acompanantes" value="+1 con niños" onclick="toggleAcomp(this)"> 👨‍👩‍👧 + 1 con niños</label>
         </div>
       </div>
       <div class="fg" id="ac-nombres" style="display:none;">
-        <label>Nombre del acompañante</label>
+        <label>Nombre del acompañante *</label>
         <input type="text" name="nombre_acompanante" placeholder="Nombre completo">
       </div>
       <div class="fg" id="ac-ninos" style="display:none;">
-        <label>¿Cuántos niños?</label>
+        <label>¿Cuántos niños? *</label>
         <select name="num_ninos">
           <option value="1">1 niño</option>
           <option value="2">2 niños</option>
@@ -524,10 +520,11 @@ table.atbl td { padding:0.7rem 0.7rem; color:#bbb; border-bottom:1px solid rgba(
           <option value="4">4 niños</option>
         </select>
       </div>
+
       <div class="fg">
-        <label>Tu menú</label>
+        <label>Tu menú *</label>
         <div class="rd-group">
-          <label><input type="radio" name="menu" value="Normal"> Normal</label>
+          <label><input type="radio" name="menu" value="Normal" required> Normal</label>
           <label><input type="radio" name="menu" value="Vegetariano"> Vegetariano</label>
           <label><input type="radio" name="menu" value="Vegano"> Vegano</label>
           <label><input type="radio" name="menu" value="Sin gluten"> Sin gluten</label>
@@ -535,36 +532,31 @@ table.atbl td { padding:0.7rem 0.7rem; color:#bbb; border-bottom:1px solid rgba(
         </div>
       </div>
       <div class="fg" id="alerg-f" style="display:none;">
-        <label>Especifica tu alergia o intolerancia</label>
+        <label>Especifica tu alergia *</label>
         <input type="text" name="alergia" placeholder="Frutos secos, lácteos...">
       </div>
+
       <div class="fg">
-        <label>¿Necesitas transporte desde Madrid?</label>
+        <label>¿Necesitas transporte desde Madrid? *</label>
         <div class="rd-group">
-          <label><input type="radio" name="transporte" value="Sí"> 🚌 Sí, me apunto al autobús</label>
+          <label><input type="radio" name="transporte" value="Sí" required> 🚌 Sí, me apunto al autobús</label>
           <label><input type="radio" name="transporte" value="No"> 🚗 No, voy por mi cuenta</label>
           <label><input type="radio" name="transporte" value="Aún no sé"> 🤔 Aún no estoy seguro</label>
         </div>
       </div>
+
       <div class="fg">
-        <label>🎵 Canción que no puede faltar en la fiesta</label>
+        <label>🎵 Canción que no puede faltar <span style="opacity:0.5;font-size:0.9em;">(opcional)</span></label>
         <input type="text" name="cancion" placeholder="Artista — Canción">
       </div>
       <div class="fg">
-        <label>💌 Mensaje para Daniel & Fernando</label>
+        <label>💌 Mensaje para Daniel & Fernando <span style="opacity:0.5;font-size:0.9em;">(opcional)</span></label>
         <textarea name="mensaje" placeholder="Escríbeles lo que sientes..."></textarea>
       </div>
       <div class="form-foot">
         <button type="submit" class="btn-primary">Confirmar asistencia</button>
       </div>
     </form>
-
-    <div id="rsvp-ok">
-      <div class="ok-rule"></div>
-      <h3>¡Gracias!</h3>
-      <p>Tu confirmación ha quedado registrada.<br>Nos vemos en el Castillo de Batres — va a ser una noche inolvidable.</p>
-      <span class="hashtag">#DanielYFernando2027</span>
-    </div>
   </div>
 </section>
 
@@ -600,7 +592,7 @@ table.atbl td { padding:0.7rem 0.7rem; color:#bbb; border-bottom:1px solid rgba(
       <button id="export-btn" onclick="exportCSV()">⬇ Exportar CSV</button>
       <div class="tbl-wrap">
         <table class="atbl">
-          <thead><tr><th>#</th><th>Nombre</th><th>Email</th><th>Tel</th><th>De fuera</th><th>Acomp.</th><th>Niños</th><th>Menú</th><th>Bus</th><th>Canción</th><th>Mensaje</th><th>Fecha</th></tr></thead>
+          <thead><tr><th>#</th><th>Nombre</th><th>Tel</th><th>De fuera</th><th>Acomp.</th><th>Niños</th><th>Menú</th><th>Bus</th><th>Canción</th><th>Mensaje</th><th>Fecha</th></tr></thead>
           <tbody id="a-tbody"></tbody>
         </table>
       </div>
@@ -609,86 +601,83 @@ table.atbl td { padding:0.7rem 0.7rem; color:#bbb; border-bottom:1px solid rgba(
 </div>
 
 <script>
-const CREDS = {u:'invitado', p:'boda2025'};
-const ADMIN_P = 'admin2025';
-const WEDDING = new Date(2027, 4, 28, 18, 30, 0);
+const CREDS={u:'invitado',p:'boda2025'};
+const ADMIN_P='admin2025';
+const WEDDING=new Date(2027,4,28,18,30,0);
 
-window.onload = () => {
-  document.getElementById('lp').addEventListener('keydown', e => { if(e.key==='Enter') doLogin(); });
-  if(sessionStorage.getItem('w_auth')==='1'){ document.getElementById('login-screen').style.display='none'; init(); }
+window.onload=()=>{
+  document.getElementById('lp').addEventListener('keydown',e=>{if(e.key==='Enter')doLogin();});
+  if(sessionStorage.getItem('w_auth')==='1'){document.getElementById('login-screen').style.display='none';init();}
 };
 
 function doLogin(){
-  const u=document.getElementById('lu').value.trim();
-  const p=document.getElementById('lp').value;
-  if(u===CREDS.u && p===CREDS.p){ sessionStorage.setItem('w_auth','1'); document.getElementById('login-screen').style.display='none'; init(); }
-  else { document.getElementById('lerr').style.display='block'; }
+  const u=document.getElementById('lu').value.trim(),p=document.getElementById('lp').value;
+  if(u===CREDS.u&&p===CREDS.p){sessionStorage.setItem('w_auth','1');document.getElementById('login-screen').style.display='none';init();}
+  else{document.getElementById('lerr').style.display='block';}
 }
 
-function init(){ countdown(); scrollFade(); }
-function toggleNav(){ document.getElementById('nav-ul').classList.toggle('open'); }
-function closeNav(){ document.getElementById('nav-ul').classList.remove('open'); }
+function init(){countdown();scrollFade();}
+function toggleNav(){document.getElementById('nav-ul').classList.toggle('open');}
+function closeNav(){document.getElementById('nav-ul').classList.remove('open');}
 
 function countdown(){
   function tick(){
     const diff=WEDDING-new Date();
-    if(diff<=0){ document.querySelector('.countdown').innerHTML='<p style="color:var(--gold);font-family:Cormorant Garamond,serif;font-size:2rem;font-weight:300;letter-spacing:0.1em">¡Hoy es el día!</p>'; return; }
+    if(diff<=0){document.querySelector('.countdown').innerHTML='<p style="color:var(--gold);font-family:Cormorant Garamond,serif;font-size:2rem;font-weight:300;">¡Hoy es el día!</p>';return;}
     const d=Math.floor(diff/86400000),h=Math.floor(diff%86400000/3600000),m=Math.floor(diff%3600000/60000),s=Math.floor(diff%60000/1000);
     document.getElementById('cd-d').textContent=String(d).padStart(2,'0');
     document.getElementById('cd-h').textContent=String(h).padStart(2,'0');
     document.getElementById('cd-m').textContent=String(m).padStart(2,'0');
     document.getElementById('cd-s').textContent=String(s).padStart(2,'0');
   }
-  tick(); setInterval(tick,1000);
+  tick();setInterval(tick,1000);
 }
 
 function scrollFade(){
-  const obs=new IntersectionObserver(entries=>{ entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); obs.unobserve(e.target); } }); },{threshold:0.1});
+  const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');obs.unobserve(e.target);}});},{threshold:0.1});
   document.querySelectorAll('.fi').forEach(el=>obs.observe(el));
 }
 
-function openLb(src){ document.getElementById('lb-img').src=src; document.getElementById('lightbox').classList.add('active'); }
-function closeLb(){ document.getElementById('lightbox').classList.remove('active'); }
-
-function openDresscode(){ document.getElementById('dresscode-popup').classList.add('active'); }
-function closeDresscode(){ document.getElementById('dresscode-popup').classList.remove('active'); }
+function openLb(src){document.getElementById('lb-img').src=src;document.getElementById('lightbox').classList.add('active');}
+function closeLb(){document.getElementById('lightbox').classList.remove('active');}
+function openDresscode(){document.getElementById('dresscode-popup').classList.add('active');}
+function closeDresscode(){document.getElementById('dresscode-popup').classList.remove('active');}
 
 function toggleAcomp(el){
-  const val=el.value;
-  document.getElementById('ac-nombres').style.display=(val==='+1 persona'||val==='+1 con niños')?'block':'none';
-  document.getElementById('ac-ninos').style.display=val==='+1 con niños'?'block':'none';
+  const v=el.value;
+  document.getElementById('ac-nombres').style.display=(v==='+1 persona'||v==='+1 con niños')?'block':'none';
+  document.getElementById('ac-ninos').style.display=v==='+1 con niños'?'block':'none';
 }
 
-function openAdmin(){ document.getElementById('admin-panel').style.display='block'; document.getElementById('av-login').style.display='block'; document.getElementById('av-data').style.display='none'; document.getElementById('ap-in').value=''; document.getElementById('ap-err').style.display='none'; }
-function closeAdmin(){ document.getElementById('admin-panel').style.display='none'; }
+function openAdmin(){document.getElementById('admin-panel').style.display='block';document.getElementById('av-login').style.display='block';document.getElementById('av-data').style.display='none';document.getElementById('ap-in').value='';document.getElementById('ap-err').style.display='none';}
+function closeAdmin(){document.getElementById('admin-panel').style.display='none';}
 function checkAdmin(){
-  if(document.getElementById('ap-in').value===ADMIN_P){ document.getElementById('av-login').style.display='none'; document.getElementById('av-data').style.display='block'; renderAdmin(); }
-  else { document.getElementById('ap-err').style.display='block'; }
+  if(document.getElementById('ap-in').value===ADMIN_P){document.getElementById('av-login').style.display='none';document.getElementById('av-data').style.display='block';renderAdmin();}
+  else{document.getElementById('ap-err').style.display='block';}
 }
 
 async function renderAdmin(){
-  const tb=document.getElementById('a-tbody');
-  const statsEl=document.getElementById('a-stats');
-  tb.innerHTML='<tr><td colspan="12" style="text-align:center;color:#555;padding:2rem;">Cargando...</td></tr>';
+  const tb=document.getElementById('a-tbody'),statsEl=document.getElementById('a-stats');
+  tb.innerHTML='<tr><td colspan="11" style="text-align:center;color:#555;padding:2rem;">Cargando...</td></tr>';
   let r=[];
-  try{ r=await window.fbGetRsvp(); }catch(e){ console.error(e); }
+  try{r=await window.fbGetRsvp();}catch(e){console.error(e);}
   statsEl.innerHTML=`
     <div class="stat"><span class="stat-n">${r.length}</span><span class="stat-l">Total</span></div>
-    <div class="stat"><span class="stat-n">${r.filter(x=>x.fuera_madrid==='Sí').length}</span><span class="stat-l">De fuera</span></div>
+    <div class="stat"><span class="stat-n">${r.filter(x=>x.fuera_madrid&&x.fuera_madrid.includes('Sí')).length}</span><span class="stat-l">De fuera</span></div>
     <div class="stat"><span class="stat-n">${r.filter(x=>x.transporte==='Sí').length}</span><span class="stat-l">Autobús</span></div>
     <div class="stat"><span class="stat-n">${r.filter(x=>x.acompanantes&&x.acompanantes!=='Solo yo').length}</span><span class="stat-l">Con acomp.</span></div>
   `;
   tb.innerHTML=!r.length
-    ?'<tr><td colspan="12" style="text-align:center;color:#444;padding:2rem;">Sin confirmaciones aún</td></tr>'
-    :r.map((x,i)=>`<tr><td>${i+1}</td><td><strong>${x.nombre||''}</strong></td><td>${x.email||''}</td><td>${x.telefono||'—'}</td><td>${x.fuera_madrid||'—'}</td><td>${x.acompanantes||'—'}</td><td>${x.num_ninos||'—'}</td><td>${x.menu||'—'}${x.alergia?' ['+x.alergia+']':''}</td><td>${x.transporte||'—'}</td><td>${x.cancion||'—'}</td><td>${x.mensaje?x.mensaje.substring(0,35)+'...':'—'}</td><td>${x.fecha?.toDate?x.fecha.toDate().toLocaleString('es-ES'):x.fecha||'—'}</td></tr>`).join('');
+    ?'<tr><td colspan="11" style="text-align:center;color:#444;padding:2rem;">Sin confirmaciones aún</td></tr>'
+    :r.map((x,i)=>`<tr><td>${i+1}</td><td><strong>${x.nombre||''}</strong></td><td>${x.telefono||'—'}</td><td>${x.fuera_madrid||'—'}</td><td>${x.acompanantes||'—'}</td><td>${x.num_ninos||'—'}</td><td>${x.menu||'—'}${x.alergia?' ['+x.alergia+']':''}</td><td>${x.transporte||'—'}</td><td>${x.cancion||'—'}</td><td>${x.mensaje?x.mensaje.substring(0,35)+'...':'—'}</td><td>${x.fecha?.toDate?x.fecha.toDate().toLocaleString('es-ES'):x.fecha||'—'}</td></tr>`).join('');
   window._adminData=r;
 }
 
 function exportCSV(){
   const r=window._adminData||[];
-  if(!r.length){ alert('Sin datos aún'); return; }
-  const h=['#','Nombre','Email','Teléfono','De fuera','Acompañantes','Niños','Menú','Alergia','Transporte','Canción','Mensaje','Fecha'];
-  const rows=r.map((x,i)=>[i+1,x.nombre,x.email,x.telefono,x.fuera_madrid,x.acompanantes,x.num_ninos,x.menu,x.alergia,x.transporte,x.cancion,x.mensaje,x.fecha?.toDate?x.fecha.toDate().toLocaleString('es-ES'):x.fecha||''].map(v=>`"${(v||'').toString().replace(/"/g,'""')}"`).join(','));
+  if(!r.length){alert('Sin datos aún');return;}
+  const h=['#','Nombre','Teléfono','De fuera','Acompañantes','Niños','Menú','Alergia','Transporte','Canción','Mensaje','Fecha'];
+  const rows=r.map((x,i)=>[i+1,x.nombre,x.telefono,x.fuera_madrid,x.acompanantes,x.num_ninos,x.menu,x.alergia,x.transporte,x.cancion,x.mensaje,x.fecha?.toDate?x.fecha.toDate().toLocaleString('es-ES'):x.fecha||''].map(v=>`"${(v||'').toString().replace(/"/g,'""')}"`).join(','));
   const csv=[h.join(','),...rows].join('\n');
   const a=document.createElement('a');
   a.href='data:text/csv;charset=utf-8,'+encodeURIComponent('\uFEFF'+csv);
@@ -696,7 +685,7 @@ function exportCSV(){
   a.click();
 }
 
-window.addEventListener('hashchange',()=>{ if(location.hash==='#admin') openAdmin(); });
+window.addEventListener('hashchange',()=>{if(location.hash==='#admin')openAdmin();});
 </script>
 </body>
 </html>
