@@ -87,7 +87,9 @@ button{font-family:var(--ff-ui);cursor:none}
   max-width:800px;
   text-align:left;
   opacity:0;
+  transition:opacity .9s ease, transform .9s ease;
 }
+.hero-content.visible{opacity:1;transform:translateY(0)}
 .hero-h1{
   font-family:var(--ff-ser);font-size:clamp(4.5rem,12vw,10rem);
   font-weight:300;color:var(--white);line-height:.88;letter-spacing:-.01em;
@@ -165,7 +167,7 @@ button{font-family:var(--ff-ui);cursor:none}
 .map-card-btn:hover{background:var(--midgreen);color:var(--white)}
 
 /* ── MARQUEE ── */
-.mq-wrap{background:var(--dkgreen);padding:1.2rem 0;overflow:hidden;border-top:1px solid rgba(196,164,74,.15);border-bottom:1px solid rgba(196,164,74,.15)}
+.mq-wrap{background:var(--dkgreen);padding:1.2rem 0;overflow:hidden;border-top:1px solid rgba(196,164,74,.15);border-bottom:1px solid rgba(196,164,74,.15);width:100vw;position:relative;left:50%;right:50%;margin-left:-50vw;margin-right:-50vw}
 .mq-track{display:inline-flex;white-space:nowrap;will-change:transform}
 .mq-item{font-family:var(--ff-ser);font-style:italic;font-size:clamp(.9rem,1.8vw,1.3rem);color:var(--gold);padding-right:3rem;letter-spacing:.05em}
 
@@ -455,9 +457,9 @@ footer p{font-family:var(--ff-ui);font-size:.68rem;color:var(--sage);letter-spac
   <!-- Marquee -->
   <div class="mq-wrap">
     <div class="mq-track" id="mq2">
-      <span class="mq-item">28 de mayo de 2027 &nbsp;·&nbsp; Castillo de Batres &nbsp;·&nbsp; Gracias por estar &nbsp;·&nbsp; </span>
-      <span class="mq-item">28 de mayo de 2027 &nbsp;·&nbsp; Castillo de Batres &nbsp;·&nbsp; Gracias por estar &nbsp;·&nbsp; </span>
-      <span class="mq-item">28 de mayo de 2027 &nbsp;·&nbsp; Castillo de Batres &nbsp;·&nbsp; Gracias por estar &nbsp;·&nbsp; </span>
+      <span class="mq-item">28 de mayo de 2027 &nbsp;·&nbsp; Castillo de Batres &nbsp;·&nbsp; </span>
+      <span class="mq-item">28 de mayo de 2027 &nbsp;·&nbsp; Castillo de Batres &nbsp;·&nbsp; </span>
+      <span class="mq-item">28 de mayo de 2027 &nbsp;·&nbsp; Castillo de Batres &nbsp;·&nbsp; </span>
     </div>
   </div>
 
@@ -515,14 +517,14 @@ footer p{font-family:var(--ff-ui);font-size:.68rem;color:var(--sage);letter-spac
         <div class="prog-place">Castillo de Batres · Batres, Madrid</div>
       </div>
       <div class="tl">
-        <div class="tl-row"><span class="tl-time">18:00</span><div class="tl-track"><div class="tl-dot tl-dot-bus"></div></div><div><div class="tl-h tl-bus">🚌 Recogida autobús</div><p class="tl-p">Salida desde Madrid hacia el castillo <em>(paradas por confirmar)</em></p></div></div>
+        <div class="tl-row"><span class="tl-time">18:00</span><div class="tl-track"><div class="tl-dot tl-dot-bus"></div></div><div><div class="tl-h tl-bus">🚌 Recogida autobús</div><p class="tl-p">Salida desde Madrid hacia el castillo</p></div></div>
         <div class="tl-row"><span class="tl-time">19:00</span><div class="tl-track"><div class="tl-dot"></div></div><div><div class="tl-h">Llegada</div><p class="tl-p">Bienvenida y recepción en los jardines</p></div></div>
         <div class="tl-row"><span class="tl-time">19:15</span><div class="tl-track"><div class="tl-dot"></div></div><div><div class="tl-h">Ceremonia civil</div><p class="tl-p">En el jardín principal del castillo</p></div></div>
         <div class="tl-row"><span class="tl-time">20:00</span><div class="tl-track"><div class="tl-dot"></div></div><div><div class="tl-h">Cóctel</div><p class="tl-p">Jardines históricos del castillo</p></div></div>
         <div class="tl-row"><span class="tl-time">22:00</span><div class="tl-track"><div class="tl-dot"></div></div><div><div class="tl-h">Cena</div><p class="tl-p">Menú degustación en el gran salón</p></div></div>
         <div class="tl-row"><span class="tl-time">00:00</span><div class="tl-track"><div class="tl-dot"></div></div><div><div class="tl-h">Fiesta</div><p class="tl-p">Música, baile y alguna que otra sorpresa</p></div></div>
         <div class="tl-row"><span class="tl-time">04:10</span><div class="tl-track"><div class="tl-dot tl-dot-bus"></div></div><div><div class="tl-h tl-bus">🚌 Regreso autobús</div><p class="tl-p">Vuelta a Madrid desde el castillo</p></div></div>
-        <p class="tl-note">Los horarios son orientativos y se irán confirmando a medida que se acerque la fecha.</p>
+        <p class="tl-note">Los horarios son orientativos y se irán confirmando a medida que se acerque la fecha. Los puntos de recogida y regreso del autobús están también pendientes de confirmar.</p>
       </div>
     </div>
   </div>
@@ -548,7 +550,7 @@ footer p{font-family:var(--ff-ui);font-size:.68rem;color:var(--sage);letter-spac
         <p>Esmoquin clásico.<br>Pajarita negra.<br>Camisa blanca y zapatos negros.</p>
       </div>
     </div>
-    <p class="dc-wilde fi">Como recordaba Oscar Wilde: <em>«Uno debería estar siempre un poco demasiado bien vestido».</em></p>
+    <p class="dc-wilde fi" style="margin-bottom:2.5rem">Como recordaba Oscar Wilde: <em>«Uno debería estar siempre un poco demasiado bien vestido».</em></p>
 
     <div class="dc-gallery fi">
       <div class="dc-mixed-grid">
@@ -677,12 +679,17 @@ function initActiveSections(){
 
 /* ── HERO ── */
 function heroAnim(){
-  // All hero content appears as one block — no stagger
-  gsap.fromTo('.hero-content',
-    {opacity:0, y:18},
-    {opacity:1, y:0, duration:.9, ease:'power2.out'}
-  );
-  gsap.to('.hero-glow',{yPercent:20,ease:'none',scrollTrigger:{trigger:'#hero',start:'top top',end:'bottom top',scrub:true}});
+  const el = document.querySelector('.hero-content');
+  // CSS fallback: add class immediately in case GSAP is slow
+  setTimeout(()=>{ if(el) el.classList.add('visible'); }, 50);
+  // GSAP animation on top
+  if(typeof gsap !== 'undefined'){
+    gsap.fromTo('.hero-content',
+      {opacity:0, y:18},
+      {opacity:1, y:0, duration:.9, ease:'power2.out'}
+    );
+    gsap.to('.hero-glow',{yPercent:20,ease:'none',scrollTrigger:{trigger:'#hero',start:'top top',end:'bottom top',scrub:true}});
+  }
 }
 
 /* ── COUNTDOWN ── */
